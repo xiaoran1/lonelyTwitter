@@ -1,5 +1,6 @@
 package ca.ualberta.cs.lonelytwitter.test;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
@@ -15,6 +16,7 @@ import ca.ualberta.cs.lonelytwitter.NormalTweetModel;
  * generate this class with new.. JUnit Test Case
  * set superclass to ActivityInstrumentationTestCase2
  */
+@SuppressLint("NewApi")
 public class LonelyTwitterActivityUITest extends
 		ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
 
@@ -32,6 +34,22 @@ public class LonelyTwitterActivityUITest extends
 		activity = getActivity();
 
 		textInput = ((EditText) activity.findViewById(ca.ualberta.cs.lonelytwitter.R.id.body));
+	}
+	
+	public void testAddTweet() throws Throwable {
+		runTestOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				makeTweet("hi there #testing");
+			}
+		});
+	}
+	
+	public void addTweet() {
+		makeTweet("haha");
+		
 	}
 	
 	/*
